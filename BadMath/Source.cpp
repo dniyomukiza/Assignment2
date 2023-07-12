@@ -1,23 +1,44 @@
 #include <iostream>
-#include <iomanip>
+#include<iomanip>
 using namespace std;
 
-float average(int i1, int i2, int i3)
-{
-	return i1 + i2 + i3 / 3.0f;
+double calculateAverage( int arr[], int size) {
+    if (size <= 0) {
+        return 0.0; // Return 0 if the array is empty or size is invalid
+    }
+
+    double sum = 0.0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i]; // Add each element to the sum
+    }
+
+    double average = sum / size; // Calculate the average
+
+    return average;
 }
 
-int main()
-{
-	int n1 =0 , n2 = 0, n3 = 0;
-	cout << "This program calculates the average of three numbers." << endl;
-	cout << "First number: "; cin >> n1;
-	cout << "Second number: "; cin >> n2;
-	cout << "Third number: "; cin >> n2;
+int main() {
+    int size;
+    cout << "How many numbers would you like to calculate average for? ";
+    cin >> size;
 
-	float a = average(n1, n2, n3);
+    if (size <= 0) {
+        cout << "Invalid size!" << endl;
+        return 0;
+    }
 
-	cout << setprecision(1) << fixed << "The average is " << a << endl;
+    int numbers[size];
 
-	return 0;
+    for (int i = 0; i < size; i++) {
+        cout << "Number " << i+1 << ": ";
+        cin >> numbers[i];
+    }
+
+    double result = calculateAverage(numbers, size);
+
+    cout <<setprecision(1) << fixed << "Average: " << result << endl;
+
+    return 0;
 }
+
+
